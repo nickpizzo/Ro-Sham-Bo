@@ -9,7 +9,8 @@ var app = {
   userChoice: "",
   outcome: "",
   boutNum: 1,
-  userName: null
+  userName: null,
+  playAgainChoice: ""
 };
 
 //function definitions
@@ -17,7 +18,7 @@ var app = {
 function getName() {
   app.userName = prompt("Please enter your name..");
   if (app.userName != "") {
-    document.getElementById("name").innerHTML = app.userName;
+    document.getElementById("name").innerHTML = app.userName + "..";
     playMatch();
   } else {
     window.location = "/Users/Nick/Documents/ironyard/day_1-4/alt.html"
@@ -39,7 +40,7 @@ function initUserChoice(){
   app.userChoice = prompt("Do you choose rock, paper or scissors?").toLowerCase();
   while (app.userChoice !== "rock" && app.userChoice !== "paper" && app.userChoice !== "scissors") {
     alert("invalid choice, please enter again");
-    app.userChoice = prompt("Do you choose rock, paper or scissors?");
+    app.userChoice = prompt("Do you choose rock, paper or scissors?").toLowerCase();
   }
 }
 
@@ -112,15 +113,26 @@ function playMatch() {
     playBout();
   }
   if(app.yourBoutScore === 2) {
-    // document.getElementById
     alert("Congratulations You have won the match!");
+    playAgain();
   } else if(app.computerBoutScore === 2){
-    // document.getElementById
     alert("The computer has won the match");
+    playAgain();
   }
-  // app.yourBoutScore = 0;
-  // app.computerBoutScore = 0;
-  // app.boutNum = 1;
 }
+
+function playAgain() {
+  app.playAgainChoice = prompt("Would you like to play again? Please type 'yes' or 'no'").toLowerCase();
+  while (app.playAgainChoice !== "yes" && app.playAgainChoice !== "no") {
+    alert("invalid choice, please enter again");
+    app.playAgainChoice = prompt("Would you like to play again? Please type 'yes' or 'no'").toLowerCase();
+  }
+  if (app.playAgainChoice === "yes") {
+    location.reload(true);
+  } else {
+    window.location = "/Users/Nick/Documents/ironyard/day_1-4/goodbye.html"
+  }
+}
+
 
 getName();
