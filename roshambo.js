@@ -8,12 +8,11 @@ var app = {
   computerBoutScore: 0,
   userChoice: "",
   outcome: "",
-  boutNum: 1,
   userName: null,
   playAgainChoice: ""
 };
 
-//function definitions
+//Function definitions
 
 function getName() {
   app.userName = prompt("Please enter your name..");
@@ -44,12 +43,12 @@ function initUserChoice(){
   }
 }
 
-
-//                 user   computer
 function compare(choice1, choice2){
   if(choice1 === choice2) {
+    document.getElementById('your-choice').innerHTML = app.userChoice;
+    document.getElementById('comp-choice').innerHTML = app.computerChoice;
+    document.getElementById('explanation').innerHTML = "TIE!";
     alert("TIE! Computer chooses " + choice2 + ", please choose again");
-    app.outcome = "TIE!" //not working!
     playEngage();
   }
   else if (choice1 === "rock") {
@@ -105,7 +104,6 @@ function playBout() {
   }
   app.yourEngScore = 0;
   app.computerEngScore = 0;
-  app.boutNum += 1;
 };
 
 function playMatch() {
@@ -133,6 +131,5 @@ function playAgain() {
     window.location = "/Users/Nick/Documents/ironyard/day_1-4/goodbye.html"
   }
 }
-
 
 getName();
